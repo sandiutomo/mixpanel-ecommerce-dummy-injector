@@ -20,7 +20,7 @@ function randomCityData(){return faker.random.arrayElement(indonesianCities);}
 /* ================= ID GENERATORS ================= */
 function generateSessionId(){return uuidv4().split('-')[0];}
 function generateTransactionId(){return `TRX-${uuidv4().split('-')[0].toUpperCase()}`;}
-// Generate device IDs
+// Generate realistic device IDs
 function generateDeviceId(deviceType){
   if(deviceType==="android"){
     return Array.from({length:16},()=>Math.floor(Math.random()*16).toString(16)).join('');
@@ -40,13 +40,39 @@ function randomPastTimestamp(days){
 
 /* ================= MARKETING DATA ================= */
 function randomUTM(){
-  const sources=["google","facebook","instagram","email","tiktok","twitter"];
-  const mediums=["cpc","organic","social","newsletter","referral"];
-  const campaigns=["spring_sale","black_friday","ramadan_sale","new_year","flash_sale","app_launch"];
+  // Realistic UTM combinations by source
+  const utmCombinations=[
+    // Google Ads (Paid)
+    {source:"google",medium:"cpc",campaigns:["flash_sale","black_friday","ramadan_sale","new_year_promo","product_launch","spring_sale"]},
+    // Google Organic (SEO)
+    {source:"google",medium:"organic",campaigns:["seo","brand_search","product_search","general"]},
+    // Facebook Ads (Paid)
+    {source:"facebook",medium:"cpc",campaigns:["flash_sale","black_friday","ramadan_sale","retargeting","lookalike","conversion"]},
+    // Facebook Organic (Social)
+    {source:"facebook",medium:"social",campaigns:["brand_awareness","engagement","content_marketing","community"]},
+    // Instagram Ads (Paid)
+    {source:"instagram",medium:"cpc",campaigns:["flash_sale","influencer_collab","story_ads","new_collection","ramadan_sale"]},
+    // Instagram Organic (Social)
+    {source:"instagram",medium:"social",campaigns:["brand_awareness","ugc_campaign","reels","stories"]},
+    // Email Marketing
+    {source:"email",medium:"newsletter",campaigns:["weekly_digest","flash_sale_email","abandoned_cart","product_update","re_engagement"]},
+    // TikTok Ads (Paid)
+    {source:"tiktok",medium:"cpc",campaigns:["viral_challenge","product_showcase","flash_sale","brand_awareness"]},
+    // TikTok Organic (Social)
+    {source:"tiktok",medium:"social",campaigns:["trending_content","brand_challenge","ugc","engagement"]},
+    // Twitter Ads (Paid)
+    {source:"twitter",medium:"cpc",campaigns:["promoted_tweets","flash_sale","event_promo","app_install"]},
+    // Twitter Organic (Social)
+    {source:"twitter",medium:"social",campaigns:["brand_awareness","customer_service","engagement","updates"]},
+    // Referral Program
+    {source:"referral",medium:"referral",campaigns:["friend_referral","loyalty_program","affiliate","influencer"]}
+  ];
+  
+  const combo=faker.random.arrayElement(utmCombinations);
   return {
-    initial_utm_source:faker.random.arrayElement(sources),
-    initial_utm_medium:faker.random.arrayElement(mediums),
-    initial_utm_campaign:faker.random.arrayElement(campaigns)
+    initial_utm_source:combo.source,
+    initial_utm_medium:combo.medium,
+    initial_utm_campaign:faker.random.arrayElement(combo.campaigns)
   };
 }
 
@@ -191,6 +217,7 @@ function generateEvent(user,product,eventName,timestamp,extraProps={}){
     event.rating=product.rating;
   }
 
+  // Add all extra properties
   Object.entries(extraProps).forEach(([k,v])=>{
     if(v!==null && v!==undefined) event[k]=v;
   });

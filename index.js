@@ -14,7 +14,7 @@ const {
 /* ================= CONFIG ================= */
 const USERS_COUNT=150;  // TODO: Adjust to your preference
 const PRODUCTS_COUNT=20; // TODO: Adjust to your preference
-const EVENTS_TARGET=12000; // TODO: Adjust to your preference
+const EVENTS_TARGET=15000; // TODO: Adjust to your preference
 const HISTORY_DAYS=90; // TODO: Adjust to your preference
 const outputDir=path.join(__dirname,"output");
 if(!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
@@ -25,7 +25,7 @@ console.log("🛠️  Generating data...\n");
 const users=[];
 const userProfiles=[];
 const userStatsMap={};
-const userEventTracker={}; // ✅ NEW: Track which users have events
+const userEventTracker={}; // Track which users have events
 
 for(let i=0;i<USERS_COUNT;i++){
   const user=generateUser();
@@ -158,7 +158,7 @@ function simulateUserJourney(user,products){
     if(Math.random()<0.6){
       currentTime+=faker.datatype.number({min:30,max:120});
       const quantity=faker.datatype.number({min:1,max:3});
-      const cartTotal=primaryProduct.price*quantity; // ✅ FIXED: Correct calculation
+      const cartTotal=primaryProduct.price*quantity;
 
       events.push(generateEvent(user,primaryProduct,"Added to Cart",currentTime,{
         session_id:sessionId,
@@ -235,7 +235,7 @@ while(events.length<EVENTS_TARGET){
   for(let s=0;s<sessionsCount;s++){
     const journey=simulateUserJourney(user,products);
     events.push(...journey);
-    userEventTracker[user.distinct_id]=true; // ✅ Mark user as having events
+    userEventTracker[user.distinct_id]=true; // Mark user as having events
     if(events.length>=EVENTS_TARGET*1.2) break;
   }
 }
