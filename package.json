@@ -1,0 +1,20 @@
+{
+  "name": "mixpanel-ecommerce-data-generator",
+  "version": "2.0.0",
+  "description": "Generate realistic e-commerce data and upload to Mixpanel",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test_connection.js",
+    "generate": "node index.js",
+    "upload": "node index.js --send"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "faker": "^5.5.3",
+    "node-fetch": "^2.6.12",
+    "uuid": "^9.0.0"
+  },
+  "keywords": ["mixpanel", "data-generator", "ecommerce"],
+  "author": "",
+  "license": "MIT"
+}
