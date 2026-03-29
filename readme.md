@@ -1,8 +1,6 @@
-![Node](https://img.shields.io/badge/Node.js-v16+-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Production%20Patterns-5A6AE8?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
-
-![Mixpanel](https://img.shields.io/badge/Mixpanel-8.3-7856FF?style=flat-square)
+![Node](https://img.shields.io/badge/Node.js-v16+-green.svg)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
+[![Mixpanel](https://img.shields.io/badge/Mixpanel-7856FF?style=flat&logo=mixpanel&logoColor=white)](https://mixpanel.com/)
 
 # 🇮🇩 Indonesian Ecommerce Data Generator
 
@@ -11,7 +9,6 @@ Generate realistic Indonesian e-commerce data for Mixpanel analytics: users, eve
 ---
 
 ## 📑 Table of Contents
-
 1. [Features](#-features)
 2. [Quick Start](#-quick-start)
 3. [Installation](#-installation)
@@ -23,17 +20,24 @@ Generate realistic Indonesian e-commerce data for Mixpanel analytics: users, eve
 
 ---
 
-## Features
+## ✨ Features
 
-- **Indonesian Users** — Realistic names (Budi, Dewi), emails, 11 cities
-- **Events** — 14 event types across the full shopping funnel
-- **Complete OS Tracking** — Android (brand, version), iOS (version, model), Web (browser)
-- **Mixpanel-Ready** — Special properties (`$name`, `$email`, `$os`, `$device_id`)
-- **Guaranteed Connections** — Every user has at least 1 event
+![hippo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmpodjk5NjNqdTc1Y2FjcWpmbjB3ZHRscW1uMW44MGlzNzIwbGw1NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1pGxZCrUkibwKAX1KO/giphy.gif)
+
+
+- **Indonesian Users** - Realistic names (Budi, Dewi), emails, 11 cities
+- **Events** - 14 event types across shopping funnel
+- **Complete OS Tracking** - Android (brand, version), iOS (version, model), Web (browser)
+- **Mixpanel-Ready** - Special properties ($name, $email, $os, $device_id)
+- **Guaranteed Connections** - Every user has at least 1 event
 
 ---
 
-## 🚀 Quick Start
+## Get Started
+
+### Step 1: Do You Have Node.js?
+
+Node.js is a tool developers use. Check if it's on your machine:
 
 ```bash
 # 1. Install Node.js v16+ from nodejs.org
@@ -56,42 +60,57 @@ mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 
 ---
 
-## Installation
+## 📦 Installation
 
 ### Prerequisites
 
-**Node.js v16+** — Check: `node -v`
-**Mixpanel Account** — Get token from Settings → Project Settings
+**Node.js v16+** - Check: `node -v`  
+**Mixpanel Account** - Get token from Settings → Project Settings
 
 ### Install Dependencies
 
 ```bash
-cd your-project-folder
+cd Desktop
+git clone https://github.com/sandiutomo/mixpanel-ecommercedata-generator.git
+cd mixpanel-ecommercedata-generator
 npm install
 ```
 
-Installs: `faker`, `uuid`, `node-fetch`, `dotenv`
+Installs: faker, uuid, node-fetch, dotenv
 
 ---
 
-## Upload to Mixpanel
+## 🚀 Upload to Mixpanel
 
-### Upload Events & Users
+First, get your Mixpanel token:
+1. Log into [Mixpanel](https://mixpanel.com/)
+2. Go to **Settings** → **Project Settings**
+3. Copy the **Token** (looks like: `abc123def456`)
+
+Then upload the data. In your command line:
 
 ```bash
+# Install the upload tool (one time only)
+npm install -g mixpanel-import
+
 # Upload events
 mixpanel-import --file output/events.csv --token YOUR_TOKEN
 
-# Upload user profiles (note: --profile flag required)
+# Upload user profiles (note: --profile flag)
 mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 ```
 
 ### Common Options
 
 ```bash
---verbose              # Verbose output — helpful for debugging
---batch-size 1000      # Smaller batch size (default: 2000)
---dry-run              # Validate without uploading
+# Verbose output (helpful for debugging)
+--verbose
+
+# Smaller batch size (default: 2000)
+--batch-size 1000
+
+# Dry run (validate without uploading)
+--dry-run
 ```
 
 ### Verify Upload
@@ -101,7 +120,7 @@ Go to Mixpanel:
 - **Reports → Insights** → Should see 14+ event types
 - Click any user → Should see their events in Activity Feed
 
-✅ **If you see data, upload was successful!**
+✅ **If you see data, upload successful!**
 
 ---
 
@@ -110,7 +129,6 @@ Go to Mixpanel:
 ### Adjust Data Volume
 
 Edit `index.js`:
-
 ```javascript
 const USERS_COUNT = 500;        // Change user count
 const EVENTS_TARGET = 50000;    // Change event count
@@ -120,7 +138,6 @@ const HISTORY_DAYS = 180;       // Change date range
 ### Add Indonesian Names
 
 Edit `utils.js`:
-
 ```javascript
 const indonesianFirstNames = {
   male: ["Budi", "Agus", "Your", "Names"],
@@ -131,103 +148,106 @@ const indonesianFirstNames = {
 ### Add Cities
 
 Edit `utils.js`:
-
 ```javascript
 const indonesianCities = [
-  { city: "Bali",   region: "Bali",       province: "Bali"        },
-  { city: "Malang", region: "East Java",   province: "Jawa Timur"  }
+  {city: "Bali", region: "Bali", province: "Bali"},
+  {city: "Malang", region: "East Java", province: "Jawa Timur"}
 ];
 ```
 
-### Add Custom Events
+### Add Custom Names
 
-Edit `index.js` inside `simulateUserJourney()`:
+Open `utils.js` and customize the Indonesian names:
 
+Edit `index.js` in `simulateUserJourney()`:
 ```javascript
-events.push(generateEvent(user, null, "Custom Event", currentTime, {
-  session_id: sessionId,
-  custom_property: "value"
-}));
+const indonesianFirstNames = {
+  male: ["Budi", "Agus", "Rudi", "Your Name"],
+  female: ["Siti", "Dewi", "Sinta", "Your Name"]
+};
 ```
+
+Save and regenerate with `node index.js`.
 
 ---
 
 ## Troubleshooting
 
-### "mixpanel-import: command not found"
+### "command not found: mixpanel-import"
+
+The upload tool isn't installed. Run:
 
 ```bash
-# Option 1: Install globally
 npm install -g mixpanel-import
+```
 
-# Option 2: Use npx (no install needed)
+Or use `npx` instead (no installation needed):
+
+# Option 2: Use npx (no install)
 npx mixpanel-import --file output/events.csv --token YOUR_TOKEN
 ```
 
-### No users visible in Mixpanel
+---
 
-The `--profile` flag is required for user profile uploads:
+### No users appear in Mixpanel
 
+**Must use `--profile` flag:**
 ```bash
 # ✅ Correct
 mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 
-# ❌ Wrong — missing --profile
+# Wrong ❌
 mixpanel-import --file output/users.csv --token YOUR_TOKEN
 ```
 
-Wait 5–10 minutes for Mixpanel to process profiles after upload.
+Wait 5-10 minutes for Mixpanel to process profiles.
 
 ### Events not linking to users
 
-Use the **same token** for both uploads:
-
+**Use same token for both uploads:**
 ```bash
-mixpanel-import --file output/events.csv --token SAME_TOKEN
-mixpanel-import --file output/users.csv --token SAME_TOKEN --profile
+# Both need YOUR_TOKEN
+mixpanel-import --file output/events.csv --token YOUR_TOKEN
+mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 ```
 
-If events still aren't linking, regenerate and re-upload:
-
+**If still broken, regenerate data:**
 ```bash
-rm -rf output/
+rm -rf output
 node index.js
-# Re-upload both files
+# Re-upload both files with same token
 ```
 
-### Upload is very slow
+---
+
+### Upload is really slow
+
+The upload can take 2-10 minutes depending on your internet. Try these:
 
 ```bash
-# Reduce batch size
+# Use smaller batch size
 mixpanel-import --file output/events.csv --token YOUR_TOKEN --batch-size 500
 
-# Or generate fewer events — edit index.js:
-# const EVENTS_TARGET = 5000;
+# Or generate fewer events
+# Edit index.js: const EVENTS_TARGET = 5000;
 ```
+
+---
 
 ### Node.js version too old
 
-Download the latest LTS version from [nodejs.org](https://nodejs.org/).
+Download latest from [nodejs.org](https://nodejs.org/) (LTS version)
 
 ---
 
 ## 📝 License
 
-This project is built as a learning reference for Mixpanel analytics and Indonesian e-commerce data patterns.
-
-You are free to use, modify, and distribute this code for **personal learning, testing, and demo purposes**. If you build on this work, attribution is appreciated but not required.
-
-> API keys and Mixpanel tokens must never be committed to version control. Use environment variables or a `.env` file (see `dotenv` in dependencies).
+This project is built as a learning reference. You are free to use, modify, and distribute this software for personal learning, testing and demo purposes.
 
 ---
 
 ## 👤 Author
 
-Built and maintained by **Sandi Utomo** — Solutions Architect specializing in mobile analytics, martech infrastructure, and data-driven product development.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sandiutomo/)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sandiutomo)
-
----
-
-*If this reference saved you time, consider leaving a ⭐ on the repo.*
+**Sandi Utomo**  
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sandiutomo/) 
+[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sandiutomo)

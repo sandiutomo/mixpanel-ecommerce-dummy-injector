@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Indonesian Ecommerce Data Generator"
+message: "If you use this project, please cite it as below."
+type: software
+authors:
+  - family-names: "Utomo"
+    given-names: "Sandi"
+    affiliation: "Independent Developer"
+repository-code: "https://github.com/sandiutomo/indonesian-ecommerce-data-generator"
+url: "https://github.com/sandiutomo/indonesian-ecommerce-data-generator"
+abstract: "A Node.js tool that generates realistic Indonesian e-commerce user profiles and shopping event data in Mixpanel-compatible CSV format. Creates 250 users with Indonesian localization and 20,000 realistic shopping funnel events for testing analytics implementations."
+keywords:
+  - data-generation
+  - indonesian-data
+  - ecommerce
+  - mixpanel
+  - analytics-testing
+  - csv-export
+  - node-js
+  - faker
+version: 1.0.0
+date-released: 2024-01-15
+license: MIT

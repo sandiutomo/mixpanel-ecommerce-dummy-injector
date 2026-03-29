@@ -12,9 +12,9 @@ const {
 } = require("./utils");
 
 /* ================= CONFIG ================= */
-const USERS_COUNT=150;  // TODO: Adjust to your preference
-const PRODUCTS_COUNT=20; // TODO: Adjust to your preference
-const EVENTS_TARGET=15000; // TODO: Adjust to your preference
+const USERS_COUNT=250;  // TODO: Adjust to your preference
+const PRODUCTS_COUNT=30; // TODO: Adjust to your preference
+const EVENTS_TARGET=20000; // TODO: Adjust to your preference
 const HISTORY_DAYS=90; // TODO: Adjust to your preference
 const outputDir=path.join(__dirname,"output");
 if(!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
