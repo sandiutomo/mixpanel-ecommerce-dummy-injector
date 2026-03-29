@@ -1,35 +1,48 @@
-![Node](https://img.shields.io/badge/Node.js-v16+-green.svg)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
-[![Mixpanel](https://img.shields.io/badge/Mixpanel-7856FF?style=flat&logo=mixpanel&logoColor=white)](https://mixpanel.com/)
-
-# 🇮🇩 Indonesian Ecommerce Data Generator
-
-Generate realistic Indonesian e-commerce data for Mixpanel analytics: users, events, complete OS tracking, and guaranteed user-event connections.
+![Node.js](https://img.shields.io/badge/Built%20With-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Mixpanel](https://img.shields.io/badge/For-Mixpanel-7856FF?style=flat-square&logo=mixpanel&logoColor=white)
+![Indonesia](https://img.shields.io/badge/Data-Indonesian%20Ecommerce-FF6B35?style=flat-square)
+![Prototype](https://img.shields.io/badge/Status-Prototype-FF9500?style=flat-square)
+![Free](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
 ---
 
-## 📑 Table of Contents
-1. [Features](#-features)
-2. [Quick Start](#-quick-start)
-3. [Installation](#-installation)
-4. [Upload to Mixpanel](#-upload-to-mixpanel)
-5. [Customization](#️-customization)
-6. [Troubleshooting](#-troubleshooting)
-7. [License](#-license)
-8. [Author](#-author)
+# Indonesian Ecommerce Data Generator
+
+A tool that generates realistic Indonesian e-commerce customer data in seconds — perfect for testing your Mixpanel analytics setup before connecting real users.
+
+**Why use this?** Instead of waiting weeks to collect real user data, you can instantly populate your Mixpanel account with 250 realistic Indonesian customers and 20,000 shopping events. Test your dashboard, set up alerts, and validate your tracking — all with fake but realistic data.
+
+**This is a prototype and learning reference tool** — built to show how analytics teams can prepare test data. Perfect for understanding data structure and testing your setup, not for production use.
 
 ---
 
-## ✨ Features
+## What This Generates
 
-![hippo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmpodjk5NjNqdTc1Y2FjcWpmbjB3ZHRscW1uMW44MGlzNzIwbGw1NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1pGxZCrUkibwKAX1KO/giphy.gif)
+| What | Details |
+|---|---|
+| **250+ Indonesian Users** | Realistic names (Budi, Siti, Dewi), emails, phone numbers, addresses in 11 Indonesian cities |
+| **20,000+ Events** | Real shopping funnel: browse → add to cart → checkout → purchase, plus app crashes and filter uses |
+| **Mobile & Web Data** | Android devices (Samsung, Xiaomi, OPPO with real versions), iOS devices (iPhone models), Web browsers |
+| **Complete User Info** | City, province, signup date, last login, device OS, browser — everything you'd see from real users |
+| **Shopping Journeys** | Each user has 5-50 realistic shopping events spanning weeks (not all in one day) |
+| **Ready for Mixpanel** | Automatically formatted with Mixpanel's special tracking fields ($name, $email, $os, $device_id) |
 
+---
 
-- **Indonesian Users** - Realistic names (Budi, Dewi), emails, 11 cities
-- **Events** - 14 event types across shopping funnel
-- **Complete OS Tracking** - Android (brand, version), iOS (version, model), Web (browser)
-- **Mixpanel-Ready** - Special properties ($name, $email, $os, $device_id)
-- **Guaranteed Connections** - Every user has at least 1 event
+## Why You'd Want This
+
+**Before:**
+- ❌ Empty Mixpanel dashboard — no way to test
+- ❌ Can't set up alerts without real data
+- ❌ Don't know if your tracking is working
+- ❌ Waiting weeks for real users to trickle in
+
+**After:**
+- ✅ Instant 250 realistic users in Mixpanel
+- ✅ Test all your dashboards and reports
+- ✅ Set up funnels, alerts, and cohorts
+- ✅ Verify your tracking setup works
+- ✅ Train team on Mixpanel with real-ish data
 
 ---
 
@@ -40,47 +53,73 @@ Generate realistic Indonesian e-commerce data for Mixpanel analytics: users, eve
 Node.js is a tool developers use. Check if it's on your machine:
 
 ```bash
-# 1. Install Node.js v16+ from nodejs.org
-
-# 2. Install dependencies
-npm install
-
-# 3. Generate CSV files
-node index.js
-
-# 4. Install upload tool
-npm install -g mixpanel-import
-
-# 5. Upload to Mixpanel (replace YOUR_TOKEN)
-mixpanel-import --file output/events.csv --token YOUR_TOKEN
-mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
+node --version
 ```
 
-**Done!** Check Mixpanel → Users (250 users) and Reports → Insights (20,000 events)
+**Don't see a version number?**
+- Download from [nodejs.org](https://nodejs.org/)
+- Pick the "LTS" (Long Term Support) version
+- Follow the installer
 
 ---
 
-## 📦 Installation
+### Step 2: Open Your Command Line
 
-### Prerequisites
+**On Mac:**
+1. Hold `Cmd + Space` (opens search)
+2. Type `terminal` and press Enter
+3. A black window opens
 
-**Node.js v16+** - Check: `node -v`  
-**Mixpanel Account** - Get token from Settings → Project Settings
+**On Windows:**
+1. Press `Win + R` (opens a run box)
+2. Type `powershell` and press Enter
+   - Or search for "PowerShell" in the Start menu
+3. A blue window opens
 
-### Install Dependencies
+You're now in the command line. ✓
+
+---
+
+### Step 3: Download and Setup
+
+Copy and paste this into your command line:
 
 ```bash
 cd Desktop
-git clone https://github.com/sandiutomo/mixpanel-ecommercedata-generator.git
-cd mixpanel-ecommercedata-generator
+git clone https://github.com/sandiutomo/indonesian-ecommerce-data-generator.git
+cd indonesian-ecommerce-data-generator
 npm install
 ```
 
-Installs: faker, uuid, node-fetch, dotenv
+**What's happening?**
+- `cd Desktop` — Go to your Desktop
+- `git clone` — Download the project
+- `npm install` — Install the tools it needs
+
+Wait for it to finish (takes 30-60 seconds).
 
 ---
 
-## 🚀 Upload to Mixpanel
+### Step 4: Generate Fake Data
+
+```bash
+node index.js
+```
+
+**You should see:**
+```
+✓ Generated 250 users
+✓ Generated 20,000 events
+✓ Files saved: output/users.csv and output/events.csv
+```
+
+The tool creates two files in an `output` folder:
+- `users.csv` — All 250 customers with their info
+- `events.csv` — All 20,000 shopping events
+
+---
+
+### Step 5: Upload to Mixpanel
 
 First, get your Mixpanel token:
 1. Log into [Mixpanel](https://mixpanel.com/)
@@ -96,62 +135,96 @@ npm install -g mixpanel-import
 # Upload events
 mixpanel-import --file output/events.csv --token YOUR_TOKEN
 
-# Upload user profiles (note: --profile flag)
+# Upload users
 mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 ```
 
-### Common Options
+Replace `YOUR_TOKEN` with your actual Mixpanel token.
 
-```bash
-# Verbose output (helpful for debugging)
---verbose
-
-# Smaller batch size (default: 2000)
---batch-size 1000
-
-# Dry run (validate without uploading)
---dry-run
-```
-
-### Verify Upload
-
-Go to Mixpanel:
-- **Users** → Should see 250 users
-- **Reports → Insights** → Should see 14+ event types
-- Click any user → Should see their events in Activity Feed
-
-✅ **If you see data, upload successful!**
+**Wait for the "✓ Done" message** (takes 2-5 minutes).
 
 ---
 
-## ⚙️ Customization
+### Step 6: Check Your Mixpanel Account
 
-### Adjust Data Volume
+Go back to Mixpanel and click around:
 
-Edit `index.js`:
+1. **People** → Should show 250 users with Indonesian names
+2. **Reports → Insights** → Should show events like "product_view", "add_to_cart", "purchase"
+3. **Click any user** → See their activity timeline with all their shopping events
+
+If you see data, **upload successful!** ✅
+
+---
+
+## Understanding Your Generated Data
+
+### The Users
+
+All 250 users have:
+- Indonesian names (Budi Wijaya, Siti Nurhaliza, etc.)
+- Real email addresses (budi.wijaya@gmail.com)
+- Phone numbers in Indonesian format (+62...)
+- Address in one of 11 Indonesian cities (Jakarta, Surabaya, Bandung, etc.)
+- Signup date ranging over the past 180 days
+- Device info: Android, iOS, or Web
+
+### The Events
+
+**14 different event types** across a realistic shopping funnel:
+
+| Event | Means |
+|-------|-------|
+| **product_view** | User looked at a product |
+| **search** | User searched for something |
+| **add_to_cart** | User added item to cart |
+| **remove_from_cart** | User changed their mind, removed item |
+| **view_cart** | User reviewed their cart |
+| **start_checkout** | User began checkout process |
+| **payment_info** | User entered payment details |
+| **complete_purchase** | ✅ User successfully bought something |
+| **apply_coupon** | User used a discount code |
+| **filter_view** | User filtered products (by price, brand, etc.) |
+| **rating_view** | User looked at product reviews |
+| **app_crash** | App crashed (realistic problem!) |
+| **app_open** | User opened the app |
+| **app_close** | User closed the app |
+
+### Device Data
+
+Realistic devices:
+- **Android:** Samsung Galaxy, Xiaomi Redmi, OPPO A-series with real Android versions
+- **iOS:** iPhone 12, iPhone 13, iPhone 14 with real iOS versions
+- **Web:** Chrome, Firefox, Safari, Edge browsers
+
+---
+
+## Customize Your Data (Optional)
+
+Don't like the defaults? Edit the tool:
+
+### Change the Number of Users or Events
+
+Open `index.js` in any text editor and find these lines:
+
 ```javascript
-const USERS_COUNT = 500;        // Change user count
-const EVENTS_TARGET = 50000;    // Change event count
-const HISTORY_DAYS = 180;       // Change date range
+const USERS_COUNT = 250;        // Change to 100, 500, 1000, etc.
+const EVENTS_TARGET = 20000;    // Change to 5000, 50000, etc.
+const HISTORY_DAYS = 180;       // Change to 30, 365, etc.
 ```
 
-### Add Indonesian Names
+Save and run `node index.js` again.
 
-Edit `utils.js`:
-```javascript
-const indonesianFirstNames = {
-  male: ["Budi", "Agus", "Your", "Names"],
-  female: ["Siti", "Dewi", "Your", "Names"]
-};
-```
+### Change the Cities
 
-### Add Cities
+Open `utils.js` and find the city list. Add or remove Indonesian cities:
 
-Edit `utils.js`:
 ```javascript
 const indonesianCities = [
-  {city: "Bali", region: "Bali", province: "Bali"},
-  {city: "Malang", region: "East Java", province: "Jawa Timur"}
+  { city: "Jakarta", region: "DKI Jakarta", province: "Jakarta" },
+  { city: "Surabaya", region: "East Java", province: "Jawa Timur" },
+  // Add your own:
+  { city: "Yogyakarta", region: "Special Region", province: "DI Yogyakarta" }
 ];
 ```
 
@@ -159,7 +232,6 @@ const indonesianCities = [
 
 Open `utils.js` and customize the Indonesian names:
 
-Edit `index.js` in `simulateUserJourney()`:
 ```javascript
 const indonesianFirstNames = {
   male: ["Budi", "Agus", "Rudi", "Your Name"],
@@ -183,7 +255,7 @@ npm install -g mixpanel-import
 
 Or use `npx` instead (no installation needed):
 
-# Option 2: Use npx (no install)
+```bash
 npx mixpanel-import --file output/events.csv --token YOUR_TOKEN
 ```
 
@@ -191,27 +263,32 @@ npx mixpanel-import --file output/events.csv --token YOUR_TOKEN
 
 ### No users appear in Mixpanel
 
-**Must use `--profile` flag:**
+**Important:** Make sure you use the `--profile` flag when uploading users:
+
 ```bash
-# ✅ Correct
+# Correct ✅
 mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 
-# Wrong ❌
+# Wrong (won't upload profiles) ❌
 mixpanel-import --file output/users.csv --token YOUR_TOKEN
 ```
 
-Wait 5-10 minutes for Mixpanel to process profiles.
+After upload, wait **5-10 minutes** for Mixpanel to process.
 
-### Events not linking to users
+---
 
-**Use same token for both uploads:**
+### Events aren't connected to users
+
+Both uploads must use the **same token**:
+
 ```bash
 # Both need YOUR_TOKEN
 mixpanel-import --file output/events.csv --token YOUR_TOKEN
 mixpanel-import --file output/users.csv --token YOUR_TOKEN --profile
 ```
 
-**If still broken, regenerate data:**
+If it's still not working, regenerate fresh data:
+
 ```bash
 rm -rf output
 node index.js
@@ -225,29 +302,48 @@ node index.js
 The upload can take 2-10 minutes depending on your internet. Try these:
 
 ```bash
-# Use smaller batch size
+# Use a smaller batch size
 mixpanel-import --file output/events.csv --token YOUR_TOKEN --batch-size 500
 
 # Or generate fewer events
 # Edit index.js: const EVENTS_TARGET = 5000;
+node index.js
 ```
 
 ---
 
-### Node.js version too old
+### "node: command not found"
 
-Download latest from [nodejs.org](https://nodejs.org/) (LTS version)
-
----
-
-## 📝 License
-
-This project is built as a learning reference. You are free to use, modify, and distribute this software for personal learning, testing and demo purposes.
+Node.js isn't installed. Download from [nodejs.org](https://nodejs.org/) and install.
 
 ---
 
-## 👤 Author
+## Next Steps
 
-**Sandi Utomo**  
-[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sandiutomo/) 
-[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sandiutomo)
+Want technical details? Read **[TECHNICAL_README.md](TECHNICAL_README.md)** for how the data generator works and advanced configurations.
+
+---
+
+## What This Is (And Isn't)
+
+**This is a prototype and learning reference tool:**
+- ✅ For testing your Mixpanel setup
+- ✅ For understanding data structure
+- ✅ For training your team
+- ✅ For developing dashboards
+- ❌ NOT for production analytics
+- ❌ NOT for real customer data
+- ❌ NOT for reporting to stakeholders
+
+Use this to prepare and test—then replace with real user data.
+
+---
+
+## License
+
+Free to use for personal learning, testing, and demo purposes. Attribution appreciated. See LICENSE file for details.
+
+---
+
+[![Made by Sandi Utomo](https://img.shields.io/badge/Made%20by-Sandi%20Utomo%20😎-5A6AE8?style=flat-square&logo=github&logoColor=white)](https://github.com/sandiutomo)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sandi%20Utomo-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sandiutomo/)
